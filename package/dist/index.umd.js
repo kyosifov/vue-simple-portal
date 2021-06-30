@@ -191,11 +191,6 @@
     }
   }
 
-  if (typeof window !== 'undefined' && window.Vue && window.Vue === Vue) {
-    // plugin was inlcuded directly in a browser
-    Vue.use(install);
-  }
-
   exports.Portal = Portal;
   exports.config = config;
   exports.default = install;

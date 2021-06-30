@@ -12,10 +12,5 @@ function install(_Vue) {
   }
 }
 
-if (typeof window !== 'undefined' && window.Vue && window.Vue === Vue) {
-  // plugin was inlcuded directly in a browser
-  Vue.use(install);
-}
-
 export default install;
 export { Portal, setSelector, config };
