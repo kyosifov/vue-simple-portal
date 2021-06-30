@@ -7,6 +7,7 @@
  * http://github.com/linusborg/vue-simple-portal
 */
 import Vue from 'vue';
+import get from 'lodash.get';
 import { nanoid } from 'nanoid/non-secure';
 
 function _typeof(obj) {
@@ -128,6 +129,12 @@ var Portal = Vue.extend({
       if (!isBrowser) return;
       var parent = document.querySelector('body');
       var child = document.createElement(this.tag);
+      var classNames = get(this, '$vnode.data.staticClass', get(this, '$vnode.data.class', ''));
+
+      if (classNames) {
+        child.classList.add(classNames);
+      }
+
       child.id = this.selector.substring(1);
       parent.appendChild(child);
     },

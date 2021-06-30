@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import get from 'lodash.get';
 import config, { isBrowser } from '../config';
 import TargetContainer from './TargetContainer';
 export default Vue.extend({
@@ -71,6 +72,12 @@ export default Vue.extend({
       if (!isBrowser) return;
       var parent = document.querySelector('body');
       var child = document.createElement(this.tag);
+      var classNames = get(this, '$vnode.data.staticClass', get(this, '$vnode.data.class', ''));
+
+      if (classNames) {
+        child.classList.add(classNames);
+      }
+
       child.id = this.selector.substring(1);
       parent.appendChild(child);
     },

@@ -70,6 +70,7 @@
     "vue": "^2.6.9"
   },
   "dependencies": {
-    "@babel/cli": "^7.4.3"
+    "@babel/cli": "^7.4.3",
+    "lodash.get": "^4.4.2"
   }
 }
