@@ -2,7 +2,11 @@
   "name": "vue-simple-portal",
   "licence": "Apache-2.0",
   "private": true,
-   "version": "0.1.5",
+  "version": "0.1.5",
+  "main": "./package/dist/index.umd.js",
+  "module": "./package/dist/index.esm.js",
+  "unpkg": "./package/dist/index.umd.min.js",
+  "jsDelivr": "./package/dist/index.umd.min.js",
   "scripts": {
     "lint": "vue-cli-service lint src/**/*.js demo/**/*.js tests/**/*.js ./*.js",
     "serve": "vue-cli-service serve demo/main.js",
