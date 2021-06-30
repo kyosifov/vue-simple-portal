@@ -2,6 +2,7 @@
   "name": "vue-simple-portal",
   "licence": "Apache-2.0",
   "private": true,
+   "version": "1.0",
   "scripts": {
     "lint": "vue-cli-service lint src/**/*.js demo/**/*.js tests/**/*.js ./*.js",
     "serve": "vue-cli-service serve demo/main.js",
