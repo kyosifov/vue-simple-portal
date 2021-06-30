@@ -71,15 +71,15 @@ export default Vue.extend({
     insertTargetEl: function insertTargetEl() {
       if (!isBrowser) return;
       var parent = document.querySelector('body');
-      var child = document.createElement(this.tag);
+      this.createdPortalElement = document.createElement(this.tag);
       var classNames = get(this, '$vnode.data.staticClass', get(this, '$vnode.data.class', ''));
 
       if (classNames) {
-        child.classList.add(classNames);
+        this.createdPortalElement.classList.add(classNames);
       }
 
-      child.id = this.selector.substring(1);
-      parent.appendChild(child);
+      this.createdPortalElement.id = this.selector.substring(1);
+      parent.appendChild(this.createdPortalElement);
     },
     mount: function mount() {
       if (!isBrowser) return;
@@ -102,6 +102,10 @@ export default Vue.extend({
       });
     },
     unmount: function unmount() {
+      if (this.createdPortalElement) {
+        this.createdPortalElement.parentNode.removeChild(this.createdPortalElement);
+      }
+
       if (this.container) {
         this.container.$destroy();
         delete this.container;

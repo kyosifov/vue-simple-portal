@@ -66,7 +66,7 @@ export default Vue.extend({
     insertTargetEl() {
       if (!isBrowser) return
       const parent = document.querySelector('body')
-      const child = document.createElement(this.tag)
+      this.createdPortalElement = document.createElement(this.tag)
       const classNames = get(
         this,
         '$vnode.data.staticClass',
@@ -74,11 +74,11 @@ export default Vue.extend({
       )
 
       if (classNames) {
-        child.classList.add(classNames)
+        this.createdPortalElement.classList.add(classNames)
       }
 
-      child.id = this.selector.substring(1)
-      parent.appendChild(child)
+      this.createdPortalElement.id = this.selector.substring(1)
+      parent.appendChild(this.createdPortalElement)
     },
     mount() {
       if (!isBrowser) return
@@ -100,6 +100,12 @@ export default Vue.extend({
       })
     },
     unmount() {
+      if (this.createdPortalElement) {
+        this.createdPortalElement.parentNode.removeChild(
+          this.createdPortalElement
+        )
+      }
+
       if (this.container) {
         this.container.$destroy()
         delete this.container
